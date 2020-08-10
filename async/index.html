@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let a = 10;
+        let b;
+        
+        function two(){
+            return new Promise( (res, rej) => {
+                setTimeout( ()=> {
+                    console.log("2초 후");
+                    res(40);
+                }, 2000 );
+            });
+        }
+        
+        
+
+        //await는 무조건 async함수내에서 사용해야함
+        async function test(){
+            let a = await two();
+            let b = await two();
+            console.log(a + b);
+        }
+
+    </script>    
+
+
+</body>
+</html>

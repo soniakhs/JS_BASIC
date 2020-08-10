@@ -1,0 +1,39 @@
+<!-- 소켓 쓰는 이유: 실시간을 위해서 웹은 무저ㅗ건 요청을 해야 서버가 작동하는데 얘는 요청안해도 서버가 먼저 작동함 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/app.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="menuBox">
+            <div id="chat">
+                <div id="msgBox">
+                    <div class="msg">어서오세요</div>
+                    <div class="msg my">안녕하세요</div>
+                </div>
+                <div id="inputBox">
+                    <input type="text" id="msg">
+                    <button id="btnSend">전송</button>
+                </div>
+            </div>
+
+            <div id="user">
+                <div class="user my">User1</div>
+            </div>
+        </div>    
+    </div>
+    <div id="popup">
+        <div class="inner">
+            <h2>당신의 이름을 입력하세요</h2>
+            <input type="text" id="nickname">
+            <button id="btnRegister">입장하기</button>
+        </div>
+    </div>
+</body>
+</html>
