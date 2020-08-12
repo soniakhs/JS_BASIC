@@ -96,14 +96,88 @@
 > socket은 서버에 접속하게 되면 자신의 고유의 키값(id)을 가지고 있다.<br>
 > 새로고침을 하게 되면 그 키값(id)은 다른 키값으료  교체가 된다.
 ### ▶ 비동기식 처리에 대한 내용
-#### ⊙ socket.io 선언
-> 비동기식에 대한 내용은 굉장히 짧게 배워서 아직은 잘 모르겠으나 쉽게 보자면 자바스크립트의 경우 setTimeout()함수를 사용하였을 때<br>
-> <b>JAVA</b>처럼 순차적으로 처리를 하지 못하고 모든 구문이 끝나고나서 setTimeout()함수가 호출되기 때문에 그 점을 해결하기 위해서 사용하는 것이다.<br/>
-> 이런 것을 사용하는 이유는 단 한가지. 굉장한 지옥에 빠지게 될 수도 있기 때문이다...<br/>
+#### ⊙ 비동기식 처리란?
+> 자바 스크립트의 비동기식 처리란 특정 코드의 연산이 끝나지 않았음에도 불구하고, 그걸 멈추지 않은채 계속해서 다음 코드를 처리하는 특성을 뜻한다.
+#### ⊙ 알아야하는 이유?
+> 자바스크립트 언어는 <b>싱글 스레드 프로그래밍 언어</b>이기 때문에 비동기식으로 처리가 되는데, 비동기식으로 처리가 된다면 <b>실행 순서</b>가 보장 받지 못하고 굉장히 뒤죽박죽이게 되어버린다.<br>
+>그렇게 된다면 대체 어디서 값이 반환되고, 대체 어디서부터 잘못된 것인지 알 수 없어진다
+> 비동기식에 대한 내용은 굉장히 짧게 배워서 아직은 자세하겐 모르겠으나 쉽게 보자면 자바스크립트의 경우 setTimeout()함수를 사용하였을 때<br>
+> 예를 들어 <b>JAVA</b>처럼 순차적으로 처리를 하지 못하고 모든 구문이 끝나고나서 setTimeout()함수가 호출되기 때문에 그 점을 해결하기 위해서 사용하는 것이다.<br/>
+> 그래서 이런 것들을 해결하기 위해 대표적으로 <b>콜백함수,promise,setTimeout</b> 등을 사용할 수 있으나, 문제점이 있다.<br/>
+> 밑 사진은 콜백의 문제점중 하나인데... 이러한 지옥에 빠지게 될 수도 있기 때문이다...<br/>
 >![1_SngveBEO1YHhBZmRn6PDJw](https://user-images.githubusercontent.com/58199479/89799408-65400e80-db68-11ea-92ba-08560f41191e.jpeg)
-> 이런 느낌으로다 말이다..
+> 이런 느낌으로다 말이다..<br>
+> 아무튼 이 처리 방식은 무조건! 알아야한다! 알수 없는 오류에 빠질 수 있기 때문이다.
+#### ⊙ promise 함수 와 then
+> 앞서 말한 대표적인 비동기 처리 방식인 <b>콜백함수,promise,setTimeout</b> 등의 문제점을 보완함과 동시에 한층 더 간결하게 사용할 수 있는 동기식으로 처리하는 기법이다.<br>
+> <b>ex)const promise1 = new Promise((resolve, reject) => {<br/>
+>   resolve('Success!');<br/>
+> });<br/>
+> 
+> promise1.then((value) => {<br/>
+>   console.log(value);<br/>
+>   // expected output: "Success!"<br/>
+> });</b><br/>
+> promise에는 성공시 resolve로 값이 들어오고, 에러가 날시 reject로 값이 들어온다..<br/>
+> then 은 promise에 값이 들어올때까지 가만히 잠정을 타다가 프로미스에서 값이 들어오고 실행이 끝나면 <br/>
+> 값(value)이 들어오게 된다. <br/>
+> 이때 이 값을 이용해서 순차적으로 실행하는 것.
+
+#### ⊙ async 함수 와 await
+> 앞서 말한 대표적인 비동기 처리 방식인 <b>콜백함수,promise,setTimeout</b> 등의 문제점을 보완함과 동시에 한층 더 간결하게 사용할 수 있는 동기식으로 처리하는 기법이다.<br>
+><b>async function f() {<br/>
+>  let promise = new Promise((resolve, reject) => {<br/>
+>    setTimeout(() => resolve("완료!"), 1000)<br/>
+>  });<br/>
+>  let result = await promise; // 프라미스가 이행될 때까지 기다림 (*)<br/>
+ > alert(result); // "완료!"<br/>
+>}<br/>
+>f();</b><br/>
+> ▲ promise 와 async를 이런식으로 함께 사용하면 좋다!
+> 여기서 주의할 점은 <b>await</b>는 async 함수 내에서만 작동한다! 그외에는 작동하지 않음.
 
 
+## DAY 3 (DATE : 2020-08-12)
+### ☆ 느낀 점
+> 오늘은 간단하게 <b>CSS</b>를 이용해서 <b>그리드 레이아웃</b>을 확인해보고, </b><br/>
+> 사이트에서 정보를 파싱해오는 <b>SELENIUM</b>에 대해서 알아보았다.<br/>
+> 옛날에 고등학교 1학년때 자바를 이용해 jsoup으로 정보를 파싱해와서 무언가를 만들었던 기억이 새록새록 나서 신기했다.<br/>
+> 다만 그때와 지금이 많이 다르다고 느낀 것은 지금은 조금 더 이해하기 쉬웠고, 자바스크립트를 통해 더욱 편하게 가져올 수 있었다.<br/>
+> 지금껏 배워온 것들보다 가장 재밌다고 느낀 부분이었고 이걸 이용하면 꽤 괜찮은 프로젝트를 할 수 있을 것 같다.
+### ▶ GRID 레이아웃
+#### ⊙ 템플릿 지정
+> <b>1.grid-template-columns</b><br>
+> <b>2.grid-template-rows</b><br>
+추후수정...
+### ▶ 사이트 파싱
+#### ⊙ selenium-webdriver
+><b>관련 문서: https://www.selenium.dev/documentation/ko/</b><br>
+> selenium이란 드라이버 매니저를 뜻함!<br>
+> 쉽게 말하자면 자바에서 파싱할때 쓰던 jsoup 같은 건데 jsoup의 경우 HTML 파일만 뜯어와서 ajax 서버를 사용하는 사이트는 쓸 수가 없다.<br>
+> 여기서 ajax 란 웹페이지의 이동없이 서버를 전송해주는 그런 역할을 한다. ex)유튜브<br>
+>1. npm i selenium-webdriver<br>
+>2.... => 도움말 => 정보 => 업데이트 정보확인<br>
+>3.크롬 버전에 따라 chrome webdriver 다운 ㄱㄱ<br>
 
+#### ⊙ selenium-webdriver의 여러가지 기능들
+>const { <b>Builder , By ,Key , until</b>} = require('selenium-webdriver');<br>
+>Builder == 셀레니움과 크롬과 연결해주는 친구 = let driver = await new Builder().forBrowser('chrome').build();<br>
+>(크롬 브라우저에 로드하란 뜻. 이 순간부터 크롬 브라우저를 제어할수 있음)<br>
+>By == ~로 부터 이 값을 가져오게 함 = By.css(".sp_website .go_more") <br>
+>key == 키 입력을 위해서 만들어놈 = Key.RETURN(엔터키)<br>
+>until == ~까지 기다리게 함 =driver.wait(until.elementLocated(By.css("#nxfr_htp")),1000)
+### ▶ 모듈화
+#### ⊙ 모듈이란?
+> 모듈이란 독립적으로 재활용할 수 있는 소프트웨어 덩어리라고 볼 수 있다. 
+#### ⊙ 모듈화를 해야하는 이유?
+> 1. 재사용성 늘어남. (좋은 프로그램은 재사용성이 좋다)<br>
+> 2. 유지보수하기 편하다.<br>
+#### ⊙ 모듈화에 필요한 exports
+> <b>참고로 DAY3 에서 하는 방식은 common 방식이고 최근에는 EMA방식으로 많이 한다고 한다.</b><br>
+> <b>ex)module.exports.lunch = lunch;</b><br>
+> 이런식의 구문을 써주면 lunch 라는 이름으로 모듈을 생성한다.<br>
+####  ⊙ 본인이 만든 모듈 사용법
+> <b>ex)const {lunch} = require('./lunch');</b><br>
+> 유의할 점은 앞에 "./"를 꼭 붙혀주는 것이다.<br>
 
 
