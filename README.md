@@ -147,6 +147,7 @@
 > 지금껏 배워온 것들보다 가장 재밌다고 느낀 부분이었고 이걸 이용하면 꽤 괜찮은 프로젝트를 할 수 있을 것 같다.<br>
 > ↓ selenium을 이용해서 학교 급식정보를 파싱해봄
 >![111133](https://user-images.githubusercontent.com/58199479/90027454-884af980-dcf3-11ea-9a87-ed1947c2d203.PNG)
+
 ### ▶ GRID 레이아웃
 #### ⊙ 템플릿 지정
 > <b>1.grid-template-columns</b><br>
@@ -183,7 +184,4 @@
 > <b>ex)const {lunch} = require('./lunch');</b><br>
 > 유의할 점은 앞에 "./"를 꼭 붙혀주는 것이다.<br>
 
-
-
-![hh3Mawr](https://user-images.githubusercontent.com/58199479/90027466-8a14bd00-dcf3-11ea-8ad0-ebe7398a6c97.png)
 
