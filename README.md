@@ -209,8 +209,8 @@
 > 아직은 감이 덜 잡혀서 어렵지만 점점 아는 것이 생긴다는 느낌에 너무 기분이 좋았다.<br/>
 > 더 열심히 해야겠다...<br/>
 > 아 그리고 <b>주의할 점</b>이 있는데, 여기서 사용한 session 방식은 조금 구식인거고, <b>비동기식으로 (async)를 이용해서 할 session은 다른 모듈이 있다!</b> <br>
-> ↓ selenium을 이용해서 학교 급식정보를 파싱해봄
->![111133](https://user-images.githubusercontent.com/58199479/90027454-884af980-dcf3-11ea-9a87-ed1947c2d203.PNG)
+> ↓ node를 이용해 만든 회원가입창
+>![111122](https://user-images.githubusercontent.com/58199479/90403518-0fc1af80-e0dc-11ea-8192-40a0e949f57f.PNG)
 
 ### ▶ session 사용
 #### ⊙ express-session 미들웨어 셋팅 및 시작(sessionStart)
