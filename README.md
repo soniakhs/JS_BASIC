@@ -1,7 +1,7 @@
 # INTRODUCTION
 > node.js 에 관해 새롭게 알게된 공부 내용을 작성하는 공간이다.<br/>
 > node.js에 대한 API 문서 공간=> https://nodejs.org/api/fs.html <br/>
-> express API 문서 공간 => https://expressjs.com/ko/api.html<br/>
+> express API 문서 공간 => https://expressjs.com/ko/api.html (response,request 객체에 대한 것도 있음)<br/>
 ## DAY 1 (DATE : 2020-08-07)
 ### ☆ 느낀 점
 > 첫 수업이었는데 개인적으로 한번에 많은 내용을 공부하다보니 이해가 안되는 것도 있었다.<br/>
@@ -159,7 +159,7 @@
 > selenium이란 드라이버 매니저를 뜻함!<br>
 > 쉽게 말하자면 자바에서 파싱할때 쓰던 jsoup 같은 건데 jsoup의 경우 HTML 파일만 뜯어와서 ajax 서버를 사용하는 사이트는 쓸 수가 없다.<br>
 > 여기서 ajax 란 웹페이지의 이동없이 서버를 전송해주는 그런 역할을 한다. ex)유튜브<br>
->1. npm i selenium-webdriver<br>
+>1. npm i selenium-webdriver<br
 >2.... => 도움말 => 정보 => 업데이트 정보확인<br>
 >3.크롬 버전에 따라 chrome webdriver 다운 ㄱㄱ<br>
 
@@ -170,6 +170,21 @@
 >By == ~로 부터 이 값을 가져오게 함 = By.css(".sp_website .go_more") <br>
 >key == 키 입력을 위해서 만들어놈 = Key.RETURN(엔터키)<br>
 >until == ~까지 기다리게 함 =driver.wait(until.elementLocated(By.css("#nxfr_htp")),1000)
+
+
+#### ⊙ body-parser
+> body-parser 란 <b>post</b>로 들어온 값을 json 의 형태로 ( {key:"value"} ) 바꿔주는 그런 역할을 한다.
+
+
+#### ⊙ body-parser 의 미들웨어 셋팅
+> ▽ body-parser 의 <b>필수 셋팅</b><br>
+>  <b>ex) app.use(express.urlencoded({ extended: true }));</b><br>
+> 값이 true => 외부 파서를 사용할 경우 , false => 내장 파서를 사용할 경우 <br>
+> ▽ <b>json</b> 형태로 가져오기 <br>
+>  <b>ex) app.use(bodyParser.json())</b><br>
+
+
+
 ### ▶ 모듈화
 #### ⊙ 모듈이란?
 > 모듈이란 독립적으로 재활용할 수 있는 소프트웨어 덩어리라고 볼 수 있다. 
@@ -185,3 +200,34 @@
 > 유의할 점은 앞에 "./"를 꼭 붙혀주는 것이다.<br>
 
 
+
+## DAY 4 (DATE : 2020-08-13)
+### ☆ 느낀 점
+> 오늘은 드디어 그동안 배운 것을 토대로 <b>node</b>를 이용한 <b>사이트</b>를 만들었다.<br/>
+> 엄청나게 많은 걸 하진 않았지만  <b>session</b>과 <b>sql</b>을 node에서 사용하는 방법을 배웠고 그것을 이용해 로그인을 하는 것까지 만들었다.<br/>
+> php를 활용해서 사이트를 만들어 봐서 그런지 node에서 session하고 sql을 사용하는 방법만 익숙치 않았고 그 이후로는 쉬웠다.<br>
+> 아직은 감이 덜 잡혀서 어렵지만 점점 아는 것이 생긴다는 느낌에 너무 기분이 좋았다.<br/>
+> 더 열심히 해야겠다...<br/>
+> 아 그리고 <b>주의할 점</b>이 있는데, 여기서 사용한 session 방식은 조금 구식인거고, <b>비동기식으로 (async)를 이용해서 할 session은 다른 모듈이 있다!</b> <br>
+> ↓ selenium을 이용해서 학교 급식정보를 파싱해봄
+>![111133](https://user-images.githubusercontent.com/58199479/90027454-884af980-dcf3-11ea-9a87-ed1947c2d203.PNG)
+
+### ▶ session 사용
+#### ⊙ express-session 미들웨어 셋팅 및 시작(sessionStart)
+> <b>ex) app.use(session({<br>
+    resave:false, //요청이 변경이 안되었어도 세션정보를 계속 저장할지 말지<br>
+    saveUninitialized:false, //초기화되지 않은 세션들을 저장할 것인지<br>
+    secret:cookieSecret //쿠키에 서명할 함호화 키<br>
+}));</b><br>
+### ▶ mysql 사용
+#### ⊙ mysql, 내 DB사용하기
+> <b>const connectionInfo = {<br>
+    user:'내 아이디',<br>
+    password :'내 패스워드',<br>
+    host:'gondr.asuscomm.com'<br>
+};<br>
+
+const con = mysql.createConnection(connectionInfo);<br>
+con.query('USE 내 아이디');<br></b>
+> 이렇게 하면 내 DB를 사용하라는 구문이 된다! 
+> DB커넥션 완료!
