@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" id="game" value="game" v-model="hobbies">
+        <label for="game">게임</label>  
+        <input type="checkbox" value="programming" v-model="hobbies">프로그래밍
+        <input type="checkbox" value="cook" v-model="hobbies">요리
+        <ul>
+            <li v-for="hobby in hobbies">{{hobby}}</li>
+        </ul>
+    </div>
+    
+    <div id="app2">
+        <input type="radio" v-model="picked" value="One">One
+        <input type="radio" v-model="picked" value="Two">Two
+        <input type="radio" v-model="picked" value="Three">Three
+        <span>{{picked}}</span>
+
+        <select v-model="selected" >
+            <!-- <option>A</option>
+            <option>B</option>
+            <option>C</option> -->
+            <!-- <option value="A1">A</option>
+            <option value="B1">B</option>
+            <option value="C1">C</option> -->
+            <option v-for="item in items" :value="item.value"> {{item.name}}</option>
+        </select>
+        <span>{{selected}}</span>
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                hobbies: []
+            }
+        });
+        let app2 = new Vue({
+            el:"#app2",
+            data:{
+                picked:'',
+                selected:'',
+                items:[
+                    {value:'js',name:'자바스크립트'},
+                    {value:'php',name:'피에이치피'},
+                    {value:'java',name:'자바'},
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

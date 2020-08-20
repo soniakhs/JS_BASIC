@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .gondr-enter-active, .gondr-leave-active{
+            transition: all 1s;
+        }
+
+        .gondr-enter , .gondr-leave-to{
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- @click.prevent="link()"=>이걸 이벤트 수식어라고 부름 (.prevent하면 preventDefault임) -->
+        <!-- .once의 경우는 한번만 넘어가는 거임 그 이후로부턴 기본 동작으로 실행됨. -->
+        <a href="http://www.gmsgondr.net" @click.prevent.once="link()">gmsgondr</a><br>
+        <input type="range" min="1" max="40" v-model="range"> {{range}}
+        <ul>
+            <transition-group name="gondr" tag="div">
+                <li class="gondr-item" v-for="(item,idx) in filteredList" :key="item.id">
+                    {{item.name}}
+                    <button @click="del(idx)">삭제</button>
+                </li>
+            </transition-group>
+        </ul>
+        {{count}}명
+        <div>
+            <input type="text" v-model="name">
+            <input type="number" v-model="age">
+            <button @click="add()">추가</button>
+        </div>
+    </div>
+
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data: {
+                range:40,
+                list: [
+                    { id: 1, name: "최선한", age: 37 },
+                    { id: 2, name: "이승호", age: 19 },
+                    { id: 3, name: "박찬형", age: 9 },
+                    { id: 4, name: "정재성", age: 18 },
+                    { id: 5, name: "안진우", age: 18 }
+                ],
+                maxIdx:5,
+                name:'초기값',
+                age:1
+            },
+            //생명주기임.https://hyeooona825.tistory.com/40
+            // beforeMount(){
+            //     this.filter();
+            // },
+            methods: {
+                link(){
+                    console.log("안녕하세요");
+                },  
+                del(idx) {
+                    this.list.splice(idx, 1);
+                },add(){
+                    this.maxIdx++;
+                    this.list.push({id:this.maxIdx, name :this.name , age: this.age});
+                }
+            },
+            //computed란? => 존재하지 않는 속성인데 필요할때마다 계산해서 돌려주는 친구
+            //가상 속성을 넣을 수 있는 거임.
+            computed:{
+                count(){
+                    return this.filteredList.length;
+                },
+                filteredList(){
+                    return this.list.filter(x=>x.age <= this.range);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

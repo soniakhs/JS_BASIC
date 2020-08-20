@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <script src="/App.js"></script>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            transition: all 1s;
+            background-color: #fff;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="box" :style="colorSet">
+
+        </div>
+        <div v-if="items.length == 0">
+            <h2>아이템을 불러오는 중입니다..</h2>
+        </div>
+        <div class="item" v-for="item in items" :key="item.id">{{item.name}}</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원가입</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="id"><br>
+        <span v-if="id.length > 8">아이디는 8글자 이내어야 합니다.</span><br>
+
+        <input type="text" v-model="name"><br>
+        <span v-if="name.length > 4">아름은 4글자 이내어야 합니다.</span><br>
+
+        <input type="text" v-model="phone"><br>
+        <span v-if="phone==''">헨드폰 번호는 공백이면 안됨</span><br>
+        
+        <select v-model="selected">
+            <option v-for="com in company" :value="com.value" >{{com.name}}</option>
+        </select><br>
+
+        <input type="text" v-model="password"><br>
+        <span  v-if="password.length < 4">비밀번호는 4글자 이상이어야함</span><br>
+        <input type="text" v-model="passwordc"><br>
+        <span v-if="password != passwordc">비밀번호가 맞지않음</span><br>
+        
+        
+        <button @click="print" v-if="check">정보출력</button>
+    </div>
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                id:'',
+                name:'',
+                phone:'',
+                selected:'',
+                company:[
+                    {value:'SKT',name:"SK텔레콤"},
+                    {value:'KT',name:"올레KT"},
+                    {value:'LGU',name:"LG U+"},
+                    {value:'MVNO',name:"알뜰폰"},
+                ],
+                password:'',
+                passwordc:''
+            },methods:{
+                print(){
+                    let msg = `id: ${this.id},name:${this.name} , phone : ${this.phone} `;
+                    msg += `company : ${this.selected}`;
+                    msg+=`, password : ${this.password}`
+                    console.log(msg);
+                }
+            },computed:{
+                check(){
+                    let ch = true;
+                    if(this.id.length > 8){
+                        ch = false;
+                    }
+                    if(this.name.length > 4){
+                        ch = false;
+                    }
+                    if(this.phone==''){
+                        ch =false;
+                    }
+                    if(this.password.length < 4){
+                        ch = false;
+                    }
+
+                    if(this.password != this.passwordc){
+                        ch=false;
+                    }
+                    return ch;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
