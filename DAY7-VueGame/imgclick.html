@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .imgdiv{
+            margin: 4px;
+            border: 4px solid gray;
+            display: inline-block;
+        }
+        img{
+            width: 250px;
+            height: 180px;
+            padding:3px;
+        }
+        a{
+            text-align: center;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>내가 가고싶은 나라들</h1>
+        <div class="imgdiv" v-for="img in images">
+            <a :href="img.url" target="_blank">{{img.text}}</a>
+            <img :src="img.src" alt="">
+        </div>
+    </div>
+    
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                images:[
+                    {text:'비엔나',src:'https://cdn.pixabay.com/photo/2020/05/12/19/19/vienna-5164602_960_720.jpg',url:'https://en.wikipedia.org/wiki/Vienna'},
+                    {text:'파리',src:'https://cdn.pixabay.com/photo/2018/03/02/17/19/paris-3193674_960_720.jpg',url:'https://en.wikipedia.org/wiki/Paris'},
+                    {text:'서울',src:'https://cdn.pixabay.com/photo/2018/04/08/23/19/wood-3302802_960_720.jpg',url:'https://en.wikipedia.org/wiki/Seoul'},
+                    {text:'프라하',src:'https://cdn.pixabay.com/photo/2019/03/21/04/05/czech-republic-4070219_960_720.jpg',url:'https://en.wikipedia.org/wiki/Prague'}
+                ]
+               
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

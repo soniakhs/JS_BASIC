@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>구구단</h2>
+        <form @submit="checkResult">
+            <label>{{num1}} * {{num2}}</label>
+            <input type="number" v-model="answer" ref="user_num">&nbsp;
+            <input type="submit" value="확인">
+        </form>
+        <hr>
+        <div>{{result}}</div>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                num1:Math.ceil((Math.random()*8))+1,
+                num2:Math.ceil((Math.random()*8))+1,
+                answer :'',
+                result:null
+            },
+            methods:{
+                checkResult(e){
+                    e.preventDefault();
+                    if(parseInt(this.answer) === (this.num1 * this.num2)){
+                        this.result = '정답';
+                        this.resetGame();
+                    }else{
+                        this.result = '다시생각 ㄱㄱ';
+                        this.answer = ''
+                    }
+                },
+                resetGame(){
+                    this.num1 = Math.ceil((Math.random() * 8 ))+1;
+                    this.num1 = Math.ceil(Math.random() * 9 );
+                    this.answer = '';
+                    this.$refs.user_num.focus();
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

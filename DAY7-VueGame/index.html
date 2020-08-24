@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 :style="headingStyles">여러개의 스타일 적용</h1>
+        <h1 :class="{'applycolor':applycolor}">동적으로 class 속성 적용</h1>
+        <input type="checkbox" v-model="applycolor">
+        <span>h1 Element 스타일 변경</span>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                headingStyles: {
+                    color:'teal',
+                    fontSize:'48px',
+                    textAlign: 'center'
+                },
+                applycolor:false
+            },
+            methods:{
+
+            }
+        })
+    </script>
+    <style>
+        .applycolor {
+            color: blue;
+        }
+    </style>
+</body>
+</html>

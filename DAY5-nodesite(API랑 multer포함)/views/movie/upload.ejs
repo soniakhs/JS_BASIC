@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%- include('../include/head'); -%>
+<body>
+    <header>
+        <%- include('../include/header') -%>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <h2>파일 업로드하기</h2>
+            </div>
+        </div>
+        <!-- zerocho 사이트 참고-->
+        <div class="row mt-3">
+            <div class="col-5 offset-1">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <input type="file" class="form-control" placeholder="검색어를 입력해주세요" name="img">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary">검색</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('../include/footer') -%>    
+</body>
+</html>

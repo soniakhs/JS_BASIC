@@ -1,0 +1,16 @@
+body{
+    /* vh = 브라우저의 높이를 뜻함. 브라우저의 크기가 변할때마다 다르게됨. 50vh는 반을 차지함. */
+    /* vw = 브라우저의 너비를 뜻함. 브라우저의 크기가 변할때마다 다르게됨. 50vh는 반을 차지함. */
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: minmax(60px,110px) 1fr 60px;
+}
+
+footer{
+    background-color: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
+}

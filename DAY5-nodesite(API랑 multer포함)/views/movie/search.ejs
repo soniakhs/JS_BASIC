@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%- include ('../include/head'); -%>
+<body>
+    <header>
+        <%- include ('../include/header'); -%>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <h2>영화 검색하기</h2>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-5 offset-1">
+                <form action="/movie" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="검색어 입력 ㄱㄱ" name="word">
+                        <div class="input-group-append">
+                            <button id="" class="btn btn-primary">검색하기</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <% if(locals.list !== undefined) { %>
+        <div class="row">
+            <div class="col-10 offset-1">
+                <div class="row">
+                <% list.forEach(item =>{ %>
+                    <div class="card col-3">
+                        <% if(item.image != '') {%>
+                        <img src="<%=item.image %>" alt="movie image" height="200">
+                        <% } else {%>
+                            <img src="https://lh3.googleusercontent.com/proxy/Yj2fTC6kinjHV7NgEI110S0iQlBz5zK3aURFC99yQt1BNCjQtRaF1ONMoB9c6YJOEy_cUDw1Oo1uZj30ojY4HmYKihurjZy9tUvrr4KuXR2ei7w0b3UjviNnLSKE6UTQ3pdiTBf5rY14bUAUhT71lT_RPDqwPGLV0poaG17uxzzN9pO2ucjnjztYyQfK6iU" height="200" alt="movie image">
+                        <% } %>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <a href="<%-item.link%>" target="_blank"><%- item.title %></a>
+                            </div>
+                            <div class="card-text">
+                                <span class="badge badge-primary"><%= item.category1 %></span>
+                                
+                                <form action="/movie/buy" >
+                                    <span class="badge badge-info"><input type="text" value="<%= item.lprice %>" name="price" readonly>원</span>
+                                    <input type="submit" value="구매하기">
+                                </form>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+            </div>
+        </div>
+        <% }; %>
+    </div>
+    <%- include ('../include/footer'); -%>
+</body>
+</html>
