@@ -1,7 +1,10 @@
 # INTRODUCTION
 > node.js 에 관해 새롭게 알게된 공부 내용을 작성하는 공간이다.<br/>
+> 참고 블로그 => zerocho 
 > node.js에 대한 API 문서 공간=> https://nodejs.org/api/fs.html <br/>
 > express API 문서 공간 => https://expressjs.com/ko/api.html (response,request 객체에 대한 것도 있음)<br/>
+> vue js 문서 공간 =>https://kr.vuejs.org/v2/guide/index.html
+
 ## DAY 1 (DATE : 2020-08-07)
 ### ☆ 느낀 점
 > 첫 수업이었는데 개인적으로 한번에 많은 내용을 공부하다보니 이해가 안되는 것도 있었다.<br/>
@@ -130,7 +133,7 @@
 >  let promise = new Promise((resolve, reject) => {<br/>
 >    setTimeout(() => resolve("완료!"), 1000)<br/>
 >  });<br/>
->  let result = await promise; // 프라미스가 이행될 때까지 기다림 (*)<br/>
+>  let result = await promise; // 프미스가 이행될 때까지 기다림 (*)<br/>
  > alert(result); // "완료!"<br/>
 >}<br/>
 >f();</b><br/>
@@ -173,7 +176,8 @@
 
 
 #### ⊙ body-parser
-> body-parser 란 <b>post</b>로 들어온 값을 json 의 형태로 ( {key:"value"} ) 바꿔주는 그런 역할을 한다.
+> body-parser 란 <b>post</b>로 들어온 값을 json 의 형태로 ( {key:"value"} ) 바꿔주는 그런 역할을 한다.<br>
+> body-parser를 깔게 되면 post로 넘어온 값은 <b>req.body</b> 로 가져올 수 있다. 
 
 
 #### ⊙ body-parser 의 미들웨어 셋팅
@@ -182,7 +186,6 @@
 > 값이 true => 외부 파서를 사용할 경우 , false => 내장 파서를 사용할 경우 <br>
 > ▽ <b>json</b> 형태로 가져오기 <br>
 >  <b>ex) app.use(bodyParser.json())</b><br>
-
 
 
 ### ▶ 모듈화
@@ -198,6 +201,7 @@
 ####  ⊙ 본인이 만든 모듈 사용법
 > <b>ex)const {lunch} = require('./lunch');</b><br>
 > 유의할 점은 앞에 "./"를 꼭 붙혀주는 것이다.<br>
+
 
 
 
@@ -231,3 +235,118 @@ const con = mysql.createConnection(connectionInfo);<br>
 con.query('USE 내 아이디');<br></b>
 > 이렇게 하면 내 DB를 사용하라는 구문이 된다! 
 > DB커넥션 완료!
+
+
+
+## DAY 5 (DATE : 2020-08-19)
+### ☆ 느낀 점
+> 오늘은 배운 node를 사용해 <b>API(나는 네아버 API를 가져다가 썼다)</b>와 <b>multer</b> 사용하는 것을 배우고 그것으로 <b>사이트</b>를 완성하였다.<br/>
+> 또한 vue js에 대해서 배웠는데, <b>vue</b>에 대한 기본 문법과 <b>webpack</b>을 사용하여서 하나의 파일로 만드는 작업도 하였다.<br/>
+> 이제 본격적으로 수업한 내용을 토대로 프로젝트를 진행하는데 매우 떨리는 심정이다. <br/>
+> 나도 하나의 커뮤니티 사이트를 만들까 생각 중이다.<br/>
+> vue는 오늘 처음 배웠는데 되게 신기하고 재미있는 언어 인 것 같다.<br/>
+> 그냥 일반 스크립트에서는 절대로 쉽게 못하는 것들을 vue를 사용하면 정말 간단하고 쉽게 한다는 점이 매력적이었다.<br/>
+
+### ▶ multer
+#### ⊙ multer란?
+> multer를 사용하면 <b>파알 업로드</b>를 쉽게 할 수 있다! 사실 이부분은 제대로 배운 것이 아닌 프로젝트를 위해 잠깐 파일 업로드 부분만 한 것이므로 자세하게는 모른다.<br>
+> 참고자료 : https://www.zerocho.com/category/NodeJS/post/5950a6c4f7934c001894ea83<br>
+> 추후에 더 공부해서 업데이트 해야겠다..<br>
+### ▶ Vue
+#### ⊙ Vue 란?
+> vue는 <b>사용자 인터페이스를 위한 프레임워크</b>이다! <br>
+> 확실히 vue를 이용해 만든 사이트와 그렇지 않은 사이트는 개발할때 쉽고 안쉽고의 차이가 있는 것 같다.<br>
+#### ⊙ Vue 시작하기
+> Vue를 시작하기 위해선 일단 vue를 깔거나 CDN으로 코드를 가져와야 한다.<br>
+> 일단 나는 편의를 위해 초반에 CDN을 갖고 와서 한 html에다가 script까지 넣어서 시작했다.<br>
+> ▽Vue를 알려주기 위해서는 일단 script에 이를 추가해야한다.<br>
+> <b>new Vue({<br>
+> el:" ",<br>
+> data:{ },<br>
+> methods : {}<br>
+> }) <b><br>
+> 등등... 이것 말고도 다양한 속성이 존재하나 이것들이 제일 기본적인 부분인 것 같다.<br>
+> 우선 여기에 있는 기본적인 부분들에 대해서 자세히 보자면 <br>
+ > <b>1. el</b> : " " → 이 속성 안에는 <b>html코드에서 사용자가 vue를 이용해 사용할 객체부분을 셀렉터로 가져오는 부분</b><br>
+ > <b>2. data</b>: {} -> <b>vue에서 사용하는 데이터 값들(변수)/b>을 집어 넣는 공간이다.<br>
+ > <b>3. methods </b>: {} -> <b>vue에서 이뤄지는 function들을 집어넣는다</b><br>
+
+ #### ⊙ Vue 기본 문법
+> 그렇다면 html태그에서 vue를 연동시키는 작업을 하는 것들을 알아보자!<br>
+> 다양한 것들이 있지만 제일 간단하게 <b>v-model , v:on( @ ) , v:bind( : ) , v-for , v-if</b> 를 보자<br>
+> <b>1.v-model</b> -> <b>양방향 통신</b>을 위한 것으로 <b>input 타입(사용자가 값을 입력하는) 에서만 사용이 가능</b>하다. 이를 사용하면 사용자가 입력한 값이 그대로 vue안에 데이터 변수에 값이 담긴다.<br>
+> <b>2.v:on( @ )</b> -> 사용자가 v:on 뒤에 오는 이벤트를 일으켰을때 <b>이벤트 발생</b>을 처리하게 하는 부분이다. 예를 들어 <b>@click="a()" 이렇게 하면 (@는 축약 형태이다) 사용자가 클릭을 했을 때 a() methods를 실행하라는 의미</b>다. 이외에 <b>keyDown이나 이런 이벤트도 당연 가능</b>하다. <br>
+> 참고로 <b>@keyup.13.exact="a()"</b>  여기서 <b>13번은 엔터 키</b>이고 <b>exact는 이것만. 정확하게, 라는 의미로 이게 없으면 엔터키와 다른 키를 함께 눌러도 전송이 된다면 exact 는 무조건 엔터키만 눌러야 실행이 되는 구조</b>이다. 이외에도 <b>a태그에 preventDefault()를 주고 싶을때 간단하게 @click.prevent</b> 만 주면 끝이다.<br>
+> <b>※이벤트 수식어는 공식 문서에 https://kr.vuejs.org/v2/guide/events.html#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%88%98%EC%8B%9D%EC%96%B4 이곳에 있다.</b><br>
+> <b>3.v-bind(:) </b> -> <b>HTML 태그의 속성 값을 바인딩</b> 해줄때 사용하는 것이다! 예를 들어서 img 에 src=" " , class =" ", style=" " 등 이들의 값을 어떻게 넣어 주느냐의 문제인데, 이곳에 그냥 :src = "imgUrl" 이렇게 넣고 vue 의 data에 imgUrl을 설정해놓으면 가볍게 바인드가 되는 것이다!<br>
+> <b>4.v-for</b> -> v-for는 말그대로 <b>for문을 도는 것</b>인데, 예를 들어 vue안에 list라는 속성에서 item을 뽑아와 html을 여러번 작성하는게 아닌 하나의 코드로 여러개의 카드들을 만들어 낼 수가 있다. <br>
+> <b>5.v-if</b> -> 이 또한 말그대로 <b>if문을 도는 것</b>이다. <b>true이면 그 엘리먼트가 나오고 false이면 나오지 않는다.</b><br>
+
+ #### ⊙ Vue의 생명주기(LIfe Cycle)
+ >▽ 아래 사진이 <b>생명주기</b>이다<br>
+ >
+ >생명주기는 vue를 할때 <b>중요한 개념</b>이다.<br>
+ >아직 제대로 공부하지 않은 부분이라 추후 다시 공부할 예정<br>
+ 
+  #### ⊙ computed 속성
+ > computed 속성은 <b>존재하지 않는 속성인데 가상으로 필요할때마다 돌려주는 속성</b>이 computed이다. <br>
+ > computed의 경우 <b>참조하고 있는 값이 변경 될때마다 실행</b>을 시켜주므로 주로 좀 쓸데없는 상황에서도 돌아갈 수 있으니 그럴 땐 watch를 사용한다.<br>
+
+### ▶ axios
+#### ⊙ axios 란?
+ > <b>node.js와 브라우저를 위한 http통신 javascript 라이브러리</b><br>
+ > <b>Promise 기반의 HTTP 통신 라이브러리</b>이다.<br>
+#### ⊙ axios 를 이용한 값 보내기와 값 받기
+ > <b>ex)axios.get('/getData').then(res=>{<br>
+                this.items = res.data;<br>
+            });</b><br>
+ > 위 코드는 get 방식으로 서버에 getData로 items속성에 받아온 값들을 저장해주는 코드이다<br>
+ > 값을 보내기 위해서는<br>
+ ><b>ex)axios.get('/getData',{id:this.id}).then(res=>{<br>
+                this.items = res.data;<br>
+            });</b><br>
+  >위 코드처럼 주소 옆에 값을 같이 넣어 보내주면 된다!<br>
+  > <b>post로 보낼 거면 똑같이 axios.post()</b>이렇게 써주면 된다.<br>
+  
+
+## DAY 6 (DATE : 2020-08-20)
+### ☆ 느낀 점
+> 어제 만든 vue를 조금 더 배웠고, webpack을 사용해서 문서를 하나로 통일 시키는 작업을 하였다.
+
+### ▶ webpack
+ #### ⊙ webpack이란? 사용해야하는 이유?
+ > 코딩을 하다보면 굉장히 많은 문서들이 생기고 나중에는 결국 많은 문서들을 가지고 와서 코드가 지저분하게 보인다.<br>
+ > 그런 많은 문서들을 하나의 문서로 만들어주는 것이 webpack이다.<br>
+ > 솔직히 webpack은 나도 아직 어려워서 힘들긴하다 하하... 더 공부해야한다.<br>
+  #### ⊙ webpack 사용을 위한 환경 설정
+ > <b>㉠ 일단 webpack을 위해 깐 것들이다.<br>
+ > 1.npm i --save-dev webpack webpack-cli<br>
+ > 2.npm i --save-dev css-loader file-loader style-loader url-loader vue-loader vue-template-compiler<br>
+ > 3.npm i --save vue axios<br>
+ > 여기서 --save-dev는 개발자 용으로 깐 것들이다.<br>
+ > ㉡ package.json 으로 들어가준다.<br>
+ > webpack 사용을 위해 "scripts" 부분에 "dev":"webpack --mode=development", "prod" : "webpack --mode=production" 이 것들을 추가 시켜준다.<br>
+ > 이것들을 실행 시키는 법은 npm run dev 나 npm run prod등 npm run [name] 을 주면 된다.<br>
+ > ㉢ webpack.config.js를 만들어주고 그 안을 채운다<br>
+ >  entry => 파일들을 묶을 공간을 설정 해주는 곳<br>
+ >  output => 묶은 녀석들을 어떤 파일 이름으로 어떤 공간에 넣을 지.<br>
+ >  module => 어떤 파일은 어떻게 동작하고 어떤 파일은 이렇게 동작하고..동작을 설정해주는 곳. 이 안에 rules 설정<br>
+ >  resolve => 자주 사용하는 것들을 단축어로 만들어서 넣는 곳<br>
+ >  plugins => 노드하는데 필요한 플러그인들을 집어 넣는 곳</b><br>
+ ### ★ watch와 nodemon!
+> index.js (서버쪽 js가 바뀌면 계속해서 node index.js로 실행 시켜주고 <br>
+> webpack을 사용하면 또 npm run dev(package.json에다가 지정해논 사용자 임의 설정이름) 을 해줘야하고.,.귀찮으니<br>
+> <b>watch를 이용하면 run dev가 알아서 실행</b>되고<br>
+> <b>nodemon 을 이용하면 알아서 node index.js 를 실행</b>해준다!<br>
+
+
+
+## DAY 7 (DATE : 2020-08-24)
+### ☆ 느낀 점
+> 오늘은 그동안 만든 vue들을 component 들로 만들어보고 webpack으로 문서를 깔끔하게 정리하는 것들을 배웠다.
+
+### ▶ component
+#### ⊙ componet란?
+> 컴포넌트를 사용하면 계속해서 <b>사용했던 코드들의 재활용성을 높이고</b>, 보다 <b>효율성</b> 있고 <b>빠르게</b> <b>일괄적인 패턴</b>으로 코딩을 할 수 있다.<br>
+> 사실 컴포넌트 부분은 배운게 많이 없어서 어떻게 채워야할 지ㅜ 모르겠다<br>
+> ㅇ,ㅁ..... template...? 추후에 계속 채워나가야지..<br>
