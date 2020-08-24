@@ -265,21 +265,21 @@ con.query('USE 내 아이디');<br></b>
 > data:{ },<br>
 > methods : {}<br>
 > }) <b><br>
-> 등등... 이것 말고도 다양한 속성이 존재하나 이것들이 제일 기본적인 부분인 것 같다.<br>
+> 등등... 이것 말고도 다양한 속성이 존재하나 이것들이 제일 기본적인 부분인 것 같다.<br><br>
 > 우선 여기에 있는 기본적인 부분들에 대해서 자세히 보자면 <br>
  > <b>1. el</b> : " " → 이 속성 안에는 <b>html코드에서 사용자가 vue를 이용해 사용할 객체부분을 셀렉터로 가져오는 부분</b><br>
- > <b>2. data</b>: {} -> <b>vue에서 사용하는 데이터 값들(변수)/b>을 집어 넣는 공간이다.<br>
+ > <b>2. data</b>: {} -> <b>vue에서 사용하는 데이터 값들(변수)</b>을 집어 넣는 공간이다.<br>
  > <b>3. methods </b>: {} -> <b>vue에서 이뤄지는 function들을 집어넣는다</b><br>
 
  #### ⊙ Vue 기본 문법
 > 그렇다면 html태그에서 vue를 연동시키는 작업을 하는 것들을 알아보자!<br>
-> 다양한 것들이 있지만 제일 간단하게 <b>v-model , v:on( @ ) , v:bind( : ) , v-for , v-if</b> 를 보자<br>
-> <b>1.v-model</b> -> <b>양방향 통신</b>을 위한 것으로 <b>input 타입(사용자가 값을 입력하는) 에서만 사용이 가능</b>하다. 이를 사용하면 사용자가 입력한 값이 그대로 vue안에 데이터 변수에 값이 담긴다.<br>
-> <b>2.v:on( @ )</b> -> 사용자가 v:on 뒤에 오는 이벤트를 일으켰을때 <b>이벤트 발생</b>을 처리하게 하는 부분이다. 예를 들어 <b>@click="a()" 이렇게 하면 (@는 축약 형태이다) 사용자가 클릭을 했을 때 a() methods를 실행하라는 의미</b>다. 이외에 <b>keyDown이나 이런 이벤트도 당연 가능</b>하다. <br>
+> 다양한 것들이 있지만 제일 간단하게 <b>v-model , v:on( @ ) , v:bind( : ) , v-for , v-if</b> 를 보자<br><br>
+> <b>1.v-model</b> -> <b>양방향 통신</b>을 위한 것으로 <b>input 타입(사용자가 값을 입력하는) 에서만 사용이 가능</b>하다. 이를 사용하면 사용자가 입력한 값이 그대로 vue안에 데이터 변수에 값이 담긴다.<br><br>
+> <b>2.v:on( @ )</b> -> 사용자가 v:on 뒤에 오는 이벤트를 일으켰을때 <b>이벤트 발생</b>을 처리하게 하는 부분이다. 예를 들어 <b>@click="a()" 이렇게 하면 (@는 축약 형태이다) 사용자가 클릭을 했을 때 a() methods를 실행하라는 의미</b>다. 이외에 <b>keyDown이나 이런 이벤트도 당연 가능</b>하다. <br><br>
 > 참고로 <b>@keyup.13.exact="a()"</b>  여기서 <b>13번은 엔터 키</b>이고 <b>exact는 이것만. 정확하게, 라는 의미로 이게 없으면 엔터키와 다른 키를 함께 눌러도 전송이 된다면 exact 는 무조건 엔터키만 눌러야 실행이 되는 구조</b>이다. 이외에도 <b>a태그에 preventDefault()를 주고 싶을때 간단하게 @click.prevent</b> 만 주면 끝이다.<br>
 > <b>※이벤트 수식어는 공식 문서에 https://kr.vuejs.org/v2/guide/events.html#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%88%98%EC%8B%9D%EC%96%B4 이곳에 있다.</b><br>
-> <b>3.v-bind(:) </b> -> <b>HTML 태그의 속성 값을 바인딩</b> 해줄때 사용하는 것이다! 예를 들어서 img 에 src=" " , class =" ", style=" " 등 이들의 값을 어떻게 넣어 주느냐의 문제인데, 이곳에 그냥 :src = "imgUrl" 이렇게 넣고 vue 의 data에 imgUrl을 설정해놓으면 가볍게 바인드가 되는 것이다!<br>
-> <b>4.v-for</b> -> v-for는 말그대로 <b>for문을 도는 것</b>인데, 예를 들어 vue안에 list라는 속성에서 item을 뽑아와 html을 여러번 작성하는게 아닌 하나의 코드로 여러개의 카드들을 만들어 낼 수가 있다. <br>
+> <b>3.v-bind(:) </b> -> <b>HTML 태그의 속성 값을 바인딩</b> 해줄때 사용하는 것이다! 예를 들어서 img 에 src=" " , class =" ", style=" " 등 이들의 값을 어떻게 넣어 주느냐의 문제인데, 이곳에 그냥 :src = "imgUrl" 이렇게 넣고 vue 의 data에 imgUrl을 설정해놓으면 가볍게 바인드가 되는 것이다!<br><br>
+> <b>4.v-for</b> -> v-for는 말그대로 <b>for문을 도는 것</b>인데, 예를 들어 vue안에 list라는 속성에서 item을 뽑아와 html을 여러번 작성하는게 아닌 하나의 코드로 여러개의 카드들을 만들어 낼 수가 있다. <br><br>
 > <b>5.v-if</b> -> 이 또한 말그대로 <b>if문을 도는 것</b>이다. <b>true이면 그 엘리먼트가 나오고 false이면 나오지 않는다.</b><br>
 
  #### ⊙ Vue의 생명주기(LIfe Cycle)
@@ -300,12 +300,12 @@ con.query('USE 내 아이디');<br></b>
  > <b>ex)axios.get('/getData').then(res=>{<br>
                 this.items = res.data;<br>
             });</b><br>
- > 위 코드는 get 방식으로 서버에 getData로 items속성에 받아온 값들을 저장해주는 코드이다<br>
+ > 위 코드는 get 방식으로 서버에 getData로 items속성에 받아온 값들을 저장해주는 코드이다<br><br>
  > 값을 보내기 위해서는<br>
  ><b>ex)axios.get('/getData',{id:this.id}).then(res=>{<br>
                 this.items = res.data;<br>
             });</b><br>
-  >위 코드처럼 주소 옆에 값을 같이 넣어 보내주면 된다!<br>
+  >위 코드처럼 주소 옆에 값을 같이 넣어 보내주면 된다!<br><br>
   > <b>post로 보낼 거면 똑같이 axios.post()</b>이렇게 써주면 된다.<br>
   
 
@@ -323,10 +323,10 @@ con.query('USE 내 아이디');<br></b>
  > 1.npm i --save-dev webpack webpack-cli<br>
  > 2.npm i --save-dev css-loader file-loader style-loader url-loader vue-loader vue-template-compiler<br>
  > 3.npm i --save vue axios<br>
- > 여기서 --save-dev는 개발자 용으로 깐 것들이다.<br>
+ > 여기서 --save-dev는 개발자 용으로 깐 것들이다.<br><br>
  > ㉡ package.json 으로 들어가준다.<br>
  > webpack 사용을 위해 "scripts" 부분에 "dev":"webpack --mode=development", "prod" : "webpack --mode=production" 이 것들을 추가 시켜준다.<br>
- > 이것들을 실행 시키는 법은 npm run dev 나 npm run prod등 npm run [name] 을 주면 된다.<br>
+ > 이것들을 실행 시키는 법은 npm run dev 나 npm run prod등 npm run [name] 을 주면 된다.<br><br>
  > ㉢ webpack.config.js를 만들어주고 그 안을 채운다<br>
  >  entry => 파일들을 묶을 공간을 설정 해주는 곳<br>
  >  output => 묶은 녀석들을 어떤 파일 이름으로 어떤 공간에 넣을 지.<br>
