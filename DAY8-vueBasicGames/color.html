@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>간단한 계산기</h1>
+        <!-- .lazy => 입력이 끝난 뒤 화면 변경해줘서 조금 딜레이해줌  -->
+        이름 : <input type="text" v-model.lazy="myName">
+        <p>좋아하는 색은:</p>
+        <input type="radio" value="red" v-model="checks">빨강<br>
+        <input type="radio" value="green" v-model="checks">녹색<br>
+        <input type="radio" value="blue" v-model="checks">파랑<br>
+        <input type="radio" value="yellow" v-model="checks">노랑<br>
+        <input type="radio" value="gray" v-model="checks" >회색<br>
+        <p :style="{color:checks}">내 이름은 {{myName}} 이고 좋아하는 색은 {{checks}} 입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+               checks:'',
+               myName:''
+            },
+            computed:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

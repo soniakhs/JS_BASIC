@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>글자수 세기</h1>
+        <textarea v-model="myText" cols="30" rows="10" placeholder="감상은 50자 이내로 입력해주세요"></textarea>
+        <p :class="colors" :key="changeColor">남은 글자는 {{remaning}} 입니다</p>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                myText:'',
+               result:50,
+               colors:{
+                   green:true,
+                   red:false
+               }
+            },
+            computed:{
+                remaning(){
+                    return this.result - this.myText.length;  
+                },
+                changeColor(){
+                    if(this.remaning <= 0){
+                        this.colors.green = false;
+                        this.colors.red = true;
+                        
+                    }else if(this.remaning > 0){
+                        this.colors.green = true;
+                        this.colors.red = false;
+                    }
+                }
+            }
+        })
+    </script>
+    <style>
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
+    </style>
+</body>
+</html>
