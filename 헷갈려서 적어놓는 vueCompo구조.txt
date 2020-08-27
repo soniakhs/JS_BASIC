@@ -1,0 +1,20 @@
+계속해서 띄어주고 있는 화면 =
+ main.ejs
+     ▼
+script (app.js) -> route.js를 import - 주소와 매칭되는 녀석들의 라우팅을 돕는 녀석
+     ▼ 
+ Main.vue
+    ▼        		              	         ▼          		       ▼
+listCompo                             		itemCompo 		viewCompo
+    ▼								       
+itemCompo 를 import해서			         ▼
+<item-compo :item='item'></item-compo>     props:["item"]
+    ▼					해서 listCompo에사
+ itemcompo에 있는  template을		item이란 이름으로
+  사용하겠다는 의미,			받아옴, 이값은 
+ item이란 이름으로 아이템을 보냄		data처럼 this.item으로
+					접근이 가능
+
+
+
+SweetAlert = 얼럿창 이쁘게 꾸며주는 뇨쏙 좋아요
